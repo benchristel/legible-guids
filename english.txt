@@ -1,0 +1,67 @@
+Update posts with tags and watch their CIDs change
+
+Everything that is stored in IPFS has an associated CID. That CID is constructed by hashing the data itself. If the same hash and encoding is used, then the same data will result in the same CID. However, as soon as you edit data and store it again, it will have a new CID. The old data won’t be overridden; it’s still stored there with its old CID.
+
+Our blog doesn't have any tags yet. Let’s modify the posts again to add some tags, watching how the CID for each post changes as we change its contents.
+
+First, submit the code in its current state. You’ll see the CIDs of the blog posts. When you submit again after you’ve modified the code, you’ll see that the CIDs have changed. (We use CID.toBaseEncodedString() to access the CID as a string for purposes of logging.)
+
+
+
+    Q. I have questions on multicodec, multibase, or multihash.
+
+Please check their repositories: multicodec, multibase, multihash.
+
+    Q. Why does CID exist?
+
+We were using base58btc encoded multihashes in IPFS, and then we needed to switch formats to IPLD. We struggled with lots of problems of addressing data with different formats until we created CIDs. You can read the history of this format here: https://github.com/ipfs/specs/issues/130
+
+    Q. Is the use of multicodec similar to file extensions?
+
+Yes, kind of! like a file extension, the multicodec identifier establishes the format of the data. Unlike file extensions, these are in the middle of the identifier and not meant to be changed by users. There is also a short table of supported formats.
+
+    Q. What formats (multicodec codes) does CID support?
+
+We are figuring this out at this time. It will likely be a table of formats for secure distributed systems. So far, we want to address: IPFS's original protobuf format, the new IPLD CBOR format, git, bitcoin, and ethereum objects.
+
+Overall thoughts: if you’ve never played these, go play Armored Princess. But if you have, this one is just different enough to enjoy. I just replayed both. Which makes it sound trivial, but it’s not– they are sprawling games; DS alone takes about 60 hours.
+
+Somewhat to my surprise, I found AP quite difficult this time– I could win the battles but kept running out of money to buy units. Fortunately, I learned that there are console commands! Hit shift-tilde; the key one is rage which refills your rage meter. You can type money n to get n gold pieces, and doublearmy n to double the units in slot n of your army. You don’t need these, but especially in DS, to keep refilling units means constantly teleporting around, and it gets tedious.
+
+The heart of the game is its little battles… it’s hard not to talk about them without diminutives, because they’re cute and look like something in a board game. They are almost always winnable (unless you’ve chosen to fight enemies marked “deadly”), but the goal is really to lose as few of your own units as possible. This is harder in DS, since the units that can resurrect themselves and/or others are much rarer. But it’s fun to use lots of ranged units and high-damage tanks to decimate the enemy before they can even move.
+
+The one thing I don’t like about the game (and the reason I’m not going to start another playthrough, at least for another few years) is the back-and-forth quests. These dudes always want something from another island, and not infrequently you have to interrogate everyone on that island to get it… or everyone in the game, unless you Google the quest.
+
+The game also has some weird attitudes about women. (Note, it’s made by Russians, so they probably haven’t been challenged on this stuff so much.) On the one hand, its female units are badasses. The hardest fight in the game is against a few thousand Dryads– they can put your low-level characters to sleep, and they keep summoning new allies. One of the islands is Amazonia, which is suffering a rebellion of men, which you helpfully put down.  On the other hand, my character, the demoness, dresses like a dominatrix and gets a bevy of corrupted prisoners to wait on her. (But, well, your character is so small on the screen that you can almost always ignore this.)
+
+So, this is a really cool shot, and it kind of ruins one of my jokes, comparing Wakanda to Numbani from Overwatch. This is far better done, not least because it isn’t just futuristic slabs as in every other movie and video game; it has interesting textures and seems anchored to the natural world. The street scenes are great too– it looks like a lively city that definitely doesn’t look American.
+
+Still, I included the picture of Lagos for a reason– as a reminder of how mind-bogglingly large it is (the metropolitan area houses 21 million people, a little more than New York), and that the continent isn’t the basket case some people depict it as. (Nigeria’s per capita income is about the same as India, which today we think of, or should, as a rising power.)
+
+The movie itself has a lot to say about oppression and unfairly divided wealth, especially as it relates to Black people, but its view of Africa outside Wakanda is uniformly negative. It’s the “Third World” that Wakanda hides itself as; the only scene set in non-Wakandan Africa is a human-trafficking operation. Not every movie can be everything, but in this area the movie is maybe a little too American.
+
+Now, superhero movies are kind of forced to have a stereotyped and somewhat dumb structure. First you have to show that the superhero is awesome: they go and beat up normal mooks in amazing ways. But since 90 minutes of beating up mooks would get old, you have to have a supervillain, and the hero has to be beaten, and it’s hard not to make them look incompetent. Finally they get to be awesome again and the villain is decisively overcome.
+
+This was a major problem in The Dark Knight, and Black Panther can’t quite escape it. Chadwick Boseman gets his early awesome scenes, but he also spends a lot of the movie looking kind of lost.
+
+There’s also a special problem with the Black Panther character, which– to be honest– was created by a couple of white guys with pretty retro ideas about Africa, full of rhinos and kings and acacia trees. That is, he’s a superhero but also a traditional king His country is supposed to be wealthy and technologically advanced, yet also an absolute monarchy. (The main driver of the movie’s plot is that the king is chosen via a fight to the death.) The political contradiction was faced in the comics by Ta-Nehisi Coates, but he and Boseman both have problems humanizing the king– both T’challas are regal and austere and a little humorless.  On the other hand, that does give him a real character arc, and by the end of the movie he does have something to smile about.
+
+Fortunately for T’challa and the movie, he’s also surrounded by badass women who don’t have to go through that act-two round of doubt and defeat. The standouts here are his sister Shuri (Leticia Wright) and his main general Okoye (Danai Gurira). I would gladly watch a movie centering on either of them. Okoye is beautiful to watch, making the superheroics look effortless. Shuri has great fight scenes too, but she’s also Wakanda’s Q, its scientific heart, and there’s nothing like her smirky smile when she’s carelessly explaining some tech she knows her listeners won’t understand.
+
+The main antagonist, Erik Killmonger, is unusually good for a supervillain, because Ryan Coogler (director and co-writer) gives him an intelligent ideology and plan. (And at least at first, he’s more likeable than T’challa.) He wants to fight back— he wants to use Wakandan technology to take over the world and “run it right.” When he get a chance to confront the Wakandans, he asks them what they were doing when Africa was being carved up and millions of its people enslaved. No one answers, because they have no answer. They were protecting their little turf and that’s it.
+
+Now, the dude apparently wants to use terrorism to create this empire– his plan consists of shipping out weapons, which he’s hoping will be used to kill a lot of people. So, that’s pretty bad. But he’s useful as a critique of Wakandan complacency, and an object lesson in why alpha-male combat might not be the best political system. And again, all this is way more sophisticated than most superhero stories, which are mostly about supercriminals with no relation to actual crime, and near-supernatural threats with no relation to actual global threats.
+
+A few minor cavils:
+
+    Bits of the plot were obviously storyboarded, but not thought out. E.g. the operation in Busan (hi D.Va!) made no sense at all: the artifact wasn’t recovered, not enough operatives were sent, and Klaue was not secured.
+    T’challa asks his frenemy M’baku to safeguard his mother while the capital is held by Killmonger. Then, to push an alliance, he says Killmonger will come after M’baku. These statements don’t seem compatible…
+    “Hanuman”?  Yikes.
+
+Even more than the set design, the costume design is consistently great. Okoye and the rest of the all-female royal bodyguard are especially striking in their red armor. The designer went to the trouble of creating designs for each of Wakanda’s five tribes… most viewers won’t notice, but there’s a reason (e.g.) Lupita Nyong’o always wears green. This is great worldbuilding: it adds depth without getting in the way, and it rewards deeper viewing and re-viewing.
+
+Edit: Gaze, if you dare, on Tom & Lorenzo’s overview of the costumes of Okoye, Nakia, and Shuri in particular. Ruth Carter deservedly got an Oscar for this.
+
+Finally, a word on diversity, which is that it’s awesome. If you’re a Hollywood exec, rather than rebooting Batman for the 119th time, let some people tell stories that weren’t often given that chance before. The novelty and passion will make a better film. Also, trust me, give Shuri her own movie.
+
+
